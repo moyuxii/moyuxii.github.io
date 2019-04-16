@@ -6,29 +6,23 @@
     <description>Recent content in Posts on moyuxii&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Apr 2019 20:25:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Apr 2019 13:08:14 +0800</lastBuildDate>
     
 	<atom:link href="https://moyuxii.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Creating a New Theme</title>
-      <link>https://moyuxii.github.io/2014/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <title>Hashmap</title>
+      <link>https://moyuxii.github.io/2019/hashmap/</link>
+      <pubDate>Tue, 16 Apr 2019 13:08:14 +0800</pubDate>
       
-      <guid>https://moyuxii.github.io/2014/creating-a-new-theme/</guid>
-      <description>#11111111</description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://moyuxii.github.io/2014/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://moyuxii.github.io/2014/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+      <guid>https://moyuxii.github.io/2019/hashmap/</guid>
+      <description>关于HashMap底层原理 首先了解到 HashMap 是用来存贮一个个 （&amp;lt;键,值&amp;gt;)的集合，实则 HashMap 则为一个数组，而这种  对则为存在数组中某一位置的值；
+1、那么每个  对是存于什么位置呢？原来在将每个  存入前，还利用一个哈希函数来计算位置 index = Hash(key); 然后按照所得位置在数组存入  对。那么插入过多的  对时，则必然会出现 index冲突 的情况，这时就需要数据结构中的 拉链法 来处理冲突问题，既每当出现index冲突问题时，将新  对插入对应位置，此位置上的原  弹出，新  对通过指针指向原  对，从而达到链表的效果并同时解决了插入index冲突问题。
+2、那么当取value时用的GET(key)方法如何获取value的呢？当使用Get(key)方法取值时，会通过所填key计算 index = Hash(key)，然后在对应位置上的链表进行检索符合键值为所填key的对并返回value的值。
+注： 1、HashMap 默认长度16，并且每次扩展或手动初始化时长度必须为2的幂； 2、index = HashCode（Key） &amp;amp; （Length - 1） （&amp;amp;为二进制位运算）; 3、默认长度为16的好处，则是使插入的对分布均匀。
+关于HashMap的死锁 hashmap是单线程安全的，挡在并发多线程情况下，易出现死锁情况，原因： 首先hashmap既是一个table[];当hash(key)超出原有范围时，便会扩容出发rehash ；在单线程情况下，此操作是安全的，并且若原hash表中链表为A-&amp;gt;B-&amp;gt;C；那么转入新表中时，可能为C-&amp;gt;B-&amp;gt;A，既顺序会变反； 在rehash时会出发的一个关键方法（transfer)，见源码：
+void transfer(Entry[] newTable, boolean rehash) { int newCapacity = newTable.length; for (Entry&amp;lt;K,V&amp;gt; e : table) { while(null !</description>
     </item>
     
     <item>
@@ -39,7 +33,6 @@
       <guid>https://moyuxii.github.io/2019/my_first_blog/</guid>
       <description>##Firstly Hello,I&amp;rsquo;am moyuxii!! 我</description>
     </item>
-    
     
   </channel>
 </rss>

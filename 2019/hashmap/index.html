@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://moyuxii.github.io/2019/my_first_blog/" />
+  
+  <link rel="canonical" href="https://moyuxii.github.io/2019/hashmap/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Hashmap | moyuxii&#39;s blog
+       
+  </title>
+  <meta name="title" content="Hashmap | moyuxii&#39;s blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hashmap"/>
+<meta name="twitter:description" content="关于HashMap底层原理 首先了解到 HashMap 是用来存贮一个个 （&lt;键,值&gt;)的集合，实则 HashMap 则为一个数组，而这种  对则为存在数组中某一位置的值；
+1、那么每个  对是存于什么位置呢？原来在将每个  存入前，还利用一个哈希函数来计算位置 index = Hash(key); 然后按照所得位置在数组存入  对。那么插入过多的  对时，则必然会出现 index冲突 的情况，这时就需要数据结构中的 拉链法 来处理冲突问题，既每当出现index冲突问题时，将新  对插入对应位置，此位置上的原  弹出，新  对通过指针指向原  对，从而达到链表的效果并同时解决了插入index冲突问题。
+2、那么当取value时用的GET(key)方法如何获取value的呢？当使用Get(key)方法取值时，会通过所填key计算 index = Hash(key)，然后在对应位置上的链表进行检索符合键值为所填key的对并返回value的值。
+注： 1、HashMap 默认长度16，并且每次扩展或手动初始化时长度必须为2的幂； 2、index = HashCode（Key） &amp; （Length - 1） （&amp;为二进制位运算）; 3、默认长度为16的好处，则是使插入的对分布均匀。
+关于HashMap的死锁 hashmap是单线程安全的，挡在并发多线程情况下，易出现死锁情况，原因： 首先hashmap既是一个table[];当hash(key)超出原有范围时，便会扩容出发rehash ；在单线程情况下，此操作是安全的，并且若原hash表中链表为A-&gt;B-&gt;C；那么转入新表中时，可能为C-&gt;B-&gt;A，既顺序会变反； 在rehash时会出发的一个关键方法（transfer)，见源码：
+void transfer(Entry[] newTable, boolean rehash) { int newCapacity = newTable.length; for (Entry&lt;K,V&gt; e : table) { while(null !"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hashmap",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/moyuxii.github.io\/2019\/hashmap\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/moyuxii.github.io\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  
+  "wordcount":  122 ,
+  "url": "https:\/\/moyuxii.github.io\/2019\/hashmap\/",
+  "datePublished": "2019-04-16T13:08:14\x2b08:00",
+  "dateModified": "2019-04-16T13:08:14\x2b08:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "moyuxii",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/moyuxii.github.io\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "moyuxii"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://moyuxii.github.io">moyuxii&#39;s blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://moyuxii.github.io">moyuxii&#39;s blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Hashmap</h1>
+        <div class="post-meta">
+            Written by <a href="https://moyuxii.github.io" rel="author">moyuxii</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2019-04-16 >16 April 2019</time>
+                </span>
+                in
+                
+                <i class="iconfont icon-timer"></i>
+                1 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="关于hashmap底层原理">关于HashMap底层原理</h2>
+
+<p>首先了解到 HashMap 是用来存贮一个个 <key,value>（&lt;键,值&gt;)的集合，实则 HashMap 则为一个数组，而这种 <key,value> 对则为存在数组中某一位置的值；</p>
+
+<p>1、那么每个 <key,value> 对是存于什么位置呢？原来在将每个 <key,value> 存入前，还利用一个哈希函数来计算位置 index = Hash(key); 然后按照所得位置在数组存入 <key,value> 对。那么插入过多的 <key,value> 对时，则必然会出现 <strong>index冲突</strong> 的情况，这时就需要数据结构中的 <strong>拉链法</strong> 来处理冲突问题，既每当出现index冲突问题时，将新 <key,value> 对插入对应位置，此位置上的原 <key,value> 弹出，新 <key,value> 对通过指针指向原 <key,value> 对，从而达到链表的效果并同时解决了插入index冲突问题。</p>
+
+<p>2、那么当取value时用的GET(key)方法如何获取value的呢？当使用Get(key)方法取值时，会通过所填key计算 index = Hash(key)，然后在对应位置上的链表进行检索符合键值为所填key的<key,value>对并返回value的值。</p>
+
+<h2 id="注">注：</h2>
+
+<p>1、HashMap 默认长度16，并且每次扩展或手动初始化时长度必须为2的幂；
+2、index =  HashCode（Key） &amp;  （Length - 1） （&amp;为二进制位运算）;
+3、默认长度为16的好处，则是使插入的<key,value>对分布均匀。</p>
+
+<h2 id="关于hashmap的死锁">关于HashMap的死锁</h2>
+
+<p>hashmap是单线程安全的，挡在并发多线程情况下，易出现死锁情况，原因：
+首先hashmap既是一个table[];当hash(key)超出原有范围时，便会扩容出发rehash
+；在单线程情况下，此操作是安全的，并且若原hash表中链表为A-&gt;B-&gt;C；那么转入新表中时，可能为C-&gt;B-&gt;A，既顺序会变反；
+在rehash时会出发的一个关键方法（transfer)，见源码：</p>
+
+<pre><code>void transfer(Entry[] newTable, boolean rehash) {
+         int newCapacity = newTable.length;
+         for (Entry&lt;K,V&gt; e : table) {
+             while(null != e) {
+                Entry&lt;K,V&gt; next = e.next;
+                 if (rehash) {
+                     e.hash = null == e.key ? 0 : hash(e.key);
+                 }
+                 int i = indexFor(e.hash, newCapacity);
+                 e.next = newTable[i];
+                 newTable[i] = e;
+                 e = next;
+             }
+         }
+</code></pre>
+
+<p>分析：e节点为当前遍历链表的第一个节点，用next保存e.next；接着，e.next指向newtable[i]的第一个节点；将e插入newtable[i]的链表的头部，接着e = next并继续循环；如此，就将当前链表转移进了新的hashmap，且容易明白为什么插入新表后顺序会相反；</p>
+
+<p>那么死锁问题就出现在了这里，当多线程访问时，假设当前有两个线程同时插入数据，并都需要进行rehash，则当第一个线程rehash时并进行到next = e.next时，线程调度到线程2，则线程1暂时挂起；当线程2完成rehash建成新hashmap2时，此时，e与next皆指向的是新hashmap2中的节点，且next.next = e；则线程一继续执行，此时当执行完第一个转移时，e = next ; next = e.next ;既原有e 与 next 相互将换并继续执行循环，不难看出此时已出现环状链表；故此新建hash表进行get（）时，则会出现死锁的状况；</p>
+
+<p>解决：使用ConCurrentHashMap</p>
+
+<h2 id="有序的map类">有序的Map类</h2>
+
+<p>TreeMap和LinkedHashmap都是有序的。（TreeMap默认是key升序，LinkedHashmap默认是数据插入顺序）
+TreeMap是基于比较器Comparator来实现有序的。
+LinkedHashmap是基于链表来实现数据插入有序的。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>moyuxii </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>122</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+                <span>Share:</span>
+                <span>
+
+      
+        <a href="//twitter.com/share?url=https%3a%2f%2fmoyuxii.github.io%2f2019%2fhashmap%2f&amp;text=Hashmap&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="iconfont icon-twitter"></i>
+        </a>
+        
+      
+      
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmoyuxii.github.io%2f2019%2fhashmap%2f" target="_blank" title="Share on Facebook">
+          <i class="iconfont icon-facebook"></i>
+        </a>
+        
+      
+      
+      
+      
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmoyuxii.github.io%2f2019%2fhashmap%2f&amp;title=Hashmap" target="_blank" title="Share on LinkedIn">
+          <i class="iconfont icon-linkedin"></i>
+        </a>
+        
+      
+      
+        
+      
+        
+      
+
+          
+
+          
+
+          
+
+          
+</span>
+            </p>
+                       
+
+             
+            <p class="copyright-item">
+                Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://moyuxii.github.io">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://moyuxii.github.io/2019/my_first_blog/" class="prev" rel="prev" title="My_first_blog"><i class="iconfont icon-dajiantou"></i>&nbsp;My_first_blog</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+          <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yourdiscussshortname';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://moyuxii.github.io">moyuxii</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+
+     </div>
+  </body>
+</html>
