@@ -10,9 +10,9 @@
   
   
   
-  
-  <link rel="next" href="https://moyuxii.github.io/2019/hashmap/" />
-  <link rel="canonical" href="https://moyuxii.github.io/2019/my_first_blog/" />
+  <link rel="prev" href="https://moyuxii.github.io/2019/hashmap/" />
+  <link rel="next" href="https://moyuxii.github.io/2019/java_reflection/" />
+  <link rel="canonical" href="https://moyuxii.github.io/2019/abstracts_classandinterface/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           My_first_blog | moyuxii&#39;s blog
+           Abstracts_classAndInterface | moyuxii&#39;s blog
        
   </title>
-  <meta name="title" content="My_first_blog | moyuxii&#39;s blog">
+  <meta name="title" content="Abstracts_classAndInterface | moyuxii&#39;s blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,17 +35,19 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="My_first_blog"/>
-<meta name="twitter:description" content="Firstly Hello,I&rsquo;am moyuxii!!"/>
+<meta name="twitter:title" content="Abstracts_classAndInterface"/>
+<meta name="twitter:description" content="抽象类 简述 1、抽象类的定义： public abstract class CLASSNAME {&hellip;&hellip;} ； 2、定义的抽象类无法实例化，只能被其他类继承； 3、抽象方法中可以有定义抽象方法也可以不定义，抽象方法一定要定义在抽象类中； 4、抽象类被继承后，其中的抽象方法必须重写才可使用。
+接口 简述 1、接口的定义： public interface *INTERFACE_NAME* ； 2、接口中的所有属性默认为：public static final &hellip;.. ； 3、接口中的所有方法默认为：public abstract &hellip;.. ； 4、使用 implements 来实现接口 ；
+区别 简述 1、抽象类的作用是定义一群类的统一特征，而接口的作用是帮助类实现更多的独有功能的工具； 2、在Java中类的继承是“单继承”，可以“多对一”，但是不允许“一对多”。而一个类却可以同时实现多个接口，一个接口也可同时实现多个接口；"/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "My_first_blog",
+  "headline": "Abstracts_classAndInterface",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https:\/\/moyuxii.github.io\/2019\/my_first_blog\/"
+    "@id": "https:\/\/moyuxii.github.io\/2019\/abstracts_classandinterface\/"
   },
   "image": {
     "@type": "ImageObject",
@@ -55,10 +57,10 @@
   },
   "genre": "posts",
   
-  "wordcount":  3 ,
-  "url": "https:\/\/moyuxii.github.io\/2019\/my_first_blog\/",
-  "datePublished": "2019-04-15T20:25:59\x2b08:00",
-  "dateModified": "2019-04-15T20:25:59\x2b08:00",
+  "wordcount":  36 ,
+  "url": "https:\/\/moyuxii.github.io\/2019\/abstracts_classandinterface\/",
+  "datePublished": "2019-04-16T16:17:02\x2b08:00",
+  "dateModified": "2019-04-16T16:17:02\x2b08:00",
   
   "publisher": {
     "@type": "Organization",
@@ -128,11 +130,11 @@
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">My_first_blog</h1>
+        <h1 class="post-title">Abstracts_classAndInterface</h1>
         <div class="post-meta">
             Written by <a href="https://moyuxii.github.io" rel="author">moyuxii</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2019-04-15 >15 April 2019</time>
+                    on <time datetime=2019-04-16 >16 April 2019</time>
                 </span>
                 in
                 
@@ -156,8 +158,26 @@
           
           
 
-          <p>Firstly
-Hello,I&rsquo;am moyuxii!!</p>
+          
+
+<h2 id="抽象类-简述">抽象类 简述</h2>
+
+<p>1、抽象类的定义： <strong>public abstract  class <em>CLASSNAME</em> {&hellip;&hellip;}</strong> ；
+2、定义的抽象类无法实例化，只能被其他类继承；
+3、抽象方法中可以有定义抽象方法也可以不定义，抽象方法一定要定义在抽象类中；
+4、抽象类被继承后，其中的抽象方法必须重写才可使用。</p>
+
+<h2 id="接口-简述">接口 简述</h2>
+
+<p>1、接口的定义： <strong>public interface *INTERFACE_NAME</strong>* ；
+2、接口中的所有属性默认为：public static final &hellip;.. ；
+3、接口中的所有方法默认为：public abstract &hellip;.. ；
+4、使用 implements 来实现接口 ；</p>
+
+<h2 id="区别-简述">区别 简述</h2>
+
+<p>1、抽象类的作用是定义一群类的统一特征，而接口的作用是帮助类实现更多的独有功能的工具；
+2、在Java中类的继承是“单继承”，可以“多对一”，但是不允许“一对多”。而一个类却可以同时实现多个接口，一个接口也可同时实现多个接口；</p>
 
     </div>
 
@@ -171,7 +191,7 @@ Hello,I&rsquo;am moyuxii!!</p>
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>3</span>
+                   <span>36</span>
             </p>
             
             <p class="copyright-item">
@@ -180,13 +200,13 @@ Hello,I&rsquo;am moyuxii!!</p>
                 <span>
 
       
-        <a href="//twitter.com/share?url=https%3a%2f%2fmoyuxii.github.io%2f2019%2fmy_first_blog%2f&amp;text=My_first_blog&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fmoyuxii.github.io%2f2019%2fabstracts_classandinterface%2f&amp;text=Abstracts_classAndInterface&amp;via=" target="_blank" title="Share on Twitter">
           <i class="iconfont icon-twitter"></i>
         </a>
         
       
       
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmoyuxii.github.io%2f2019%2fmy_first_blog%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmoyuxii.github.io%2f2019%2fabstracts_classandinterface%2f" target="_blank" title="Share on Facebook">
           <i class="iconfont icon-facebook"></i>
         </a>
         
@@ -194,7 +214,7 @@ Hello,I&rsquo;am moyuxii!!</p>
       
       
       
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmoyuxii.github.io%2f2019%2fmy_first_blog%2f&amp;title=My_first_blog" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmoyuxii.github.io%2f2019%2fabstracts_classandinterface%2f&amp;title=Abstracts_classAndInterface" target="_blank" title="Share on LinkedIn">
           <i class="iconfont icon-linkedin"></i>
         </a>
         
@@ -233,9 +253,11 @@ Hello,I&rsquo;am moyuxii!!</p>
     </div>
 
     <div class="post-nav">
+        
+        <a href="https://moyuxii.github.io/2019/hashmap/" class="prev" rel="prev" title="Hashmap"><i class="iconfont icon-dajiantou"></i>&nbsp;Hashmap</a>
          
         
-        <a href="https://moyuxii.github.io/2019/hashmap/" class="next" rel="next" title="Hashmap">Hashmap&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        <a href="https://moyuxii.github.io/2019/java_reflection/" class="next" rel="next" title="Java_reflection">Java_reflection&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 

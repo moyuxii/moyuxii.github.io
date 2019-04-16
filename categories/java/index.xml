@@ -22,5 +22,30 @@
 关于HashMap的死锁 hashmap是单线程安全的，挡在并发多线程情况下，易出现死锁情况，原因： 首先hashmap既是一个table[];当hash(key)超出原有范围时，便会扩容出发rehash ；在单线程情况下，此操作是安全的，并且若原hash表中链表为A-&amp;gt;B-&amp;gt;C；那么转入新表中时，可能为C-&amp;gt;B-&amp;gt;A，既顺序会变反； 在rehash时会出发的一个关键方法（transfer)，见源码：
 void transfer(Entry[] newTable, boolean rehash) { int newCapacity = newTable.length; for (Entry&amp;lt;K,V&amp;gt; e : table) { while(null !</description>
     </item>
+	<item>
+      <title>Java_reflection</title>
+      <link>https://moyuxii.github.io/2019/java_reflection/</link>
+      <pubDate>Tue, 16 Apr 2019 16:23:03 +0800</pubDate>
+      
+      <guid>https://moyuxii.github.io/2019/java_reflection/</guid>
+      <description>什么是反射机制？ 1、在运行状态中，对于任意一个类，都能够知道这个类的属性和方法。 2、对于任意一个对象，都能够调用它的任何方法和属性。这种动态获取信息以及动态调用对象的方法的功能称为JAVA的反射。
+反射的作用 1、在运行时判断任意一个对象所属的类； 2、在运行时构造任意一个类的对象； 3、在运行时判断任意一个类所具有的成员变量和方法； 4、在运行时调用任意一个对象的方法；生成动态代理。
+反射的原理 反射的实现主要借助以下四个类：Class、Constructor、Field、Method ； 1、通过Class类获取类对象的三种方法： 第一种：通过类名获得:Class&amp;lt;?&amp;gt; class = ClassName.class; 第二种：通过类名全路径获得：Class&amp;lt;?&amp;gt; class = Class.forName(&amp;ldquo;类名全路径&amp;rdquo;); 第三种：通过实例对象获得：Class&amp;lt;?&amp;gt; class = object.getClass();
+2、通过Class类获取实现类实例化： Object o = (Object) c.newInstance() ; (其中c为Class类的实例化对象）
+3、获取类中的构造方法：4、获取类中的属性：
+5、获取类中的方法：
+注： 1、ClassForName 与 ClassLoader 的区别： 1）class.forName()除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块，还会执行给静态变量赋值的静态方法； 2）classLoader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。</description>
+    </item>
+    
+    <item>
+      <title>Abstracts_classAndInterface</title>
+      <link>https://moyuxii.github.io/2019/abstracts_classandinterface/</link>
+      <pubDate>Tue, 16 Apr 2019 16:17:02 +0800</pubDate>
+      
+      <guid>https://moyuxii.github.io/2019/abstracts_classandinterface/</guid>
+      <description>抽象类 简述 1、抽象类的定义： public abstract class CLASSNAME {&amp;hellip;&amp;hellip;} ； 2、定义的抽象类无法实例化，只能被其他类继承； 3、抽象方法中可以有定义抽象方法也可以不定义，抽象方法一定要定义在抽象类中； 4、抽象类被继承后，其中的抽象方法必须重写才可使用。
+接口 简述 1、接口的定义： public interface *INTERFACE_NAME* ； 2、接口中的所有属性默认为：public static final &amp;hellip;.. ； 3、接口中的所有方法默认为：public abstract &amp;hellip;.. ； 4、使用 implements 来实现接口 ；
+区别 简述 1、抽象类的作用是定义一群类的统一特征，而接口的作用是帮助类实现更多的独有功能的工具； 2、在Java中类的继承是“单继承”，可以“多对一”，但是不允许“一对多”。而一个类却可以同时实现多个接口，一个接口也可同时实现多个接口；</description>
+    </item>
   </channel>
 </rss>
