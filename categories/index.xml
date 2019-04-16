@@ -13,30 +13,35 @@
     
     <item>
       <title>Development</title>
-      <link>https://moyuxii.github.io/categories/development/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <link>https://moyuxii.github.io/categories/java/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://moyuxii.github.io/categories/development/</guid>
+      <guid>https://moyuxii.github.io/categories/java/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://moyuxii.github.io/categories/go/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+	<item>
+      <title>Development</title>
+      <link>https://moyuxii.github.io/categories/SpringBoot/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://moyuxii.github.io/categories/go/</guid>
+      <guid>https://moyuxii.github.io/categories/SpringBoot/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://moyuxii.github.io/categories/golang/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+	<item>
+      <title>Development</title>
+      <link>https://moyuxii.github.io/categories/JVM/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://moyuxii.github.io/categories/golang/</guid>
+      <guid>https://moyuxii.github.io/categories/JVM/</guid>
       <description></description>
     </item>
-    
+	<item>
+      <title>Development</title>
+      <link>https://moyuxii.github.io/categories/Diary/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://moyuxii.github.io/categories/Diary/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
